@@ -91,10 +91,12 @@ const char* bmeClientGetData(const char *bmeSocketPath, struct bme_reply *bmeRep
     memmove( bmeReply, ((char*) bmeReply) + rd - 128, 128);
   dumpBuffer(bmeReply, rd);
 
+  close(s);
+
   return 0;
 }
 
-int print_usage(const char *prog)
+static int print_usage(const char *prog)
 {
   fprintf(stderr, "Usage: %s <bme_socket_path>\n", prog);
   fprintf(stderr, "sizeof=%zu\n", sizeof (struct bme_reply));
@@ -106,6 +108,8 @@ int main(int argc, const char **argv)
 {
   if (argc != 2)
     return print_usage(argv[0]);
+
+  signal(SIGHUP, SIG_IGN);
 
   struct bme_reply bmeReply;
   memset(&bmeReply, 0, sizeof bmeReply);
