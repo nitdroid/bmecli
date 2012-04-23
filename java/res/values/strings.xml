@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, ClientBMEActivity!</string>
     <string name="app_name">ClientBME</string>
+    <string name="button_refresh">Refresh</string>
 
 </resources>

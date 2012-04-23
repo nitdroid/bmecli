@@ -3,6 +3,8 @@ package com.nitdroid.clientbme;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ClientBMEActivity extends Activity {
@@ -11,6 +13,16 @@ public class ClientBMEActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        updateBMEInfo();
+    }
+
+	// This method is called at button click because we assigned the name to the
+	// "On Click property" of the button
+	public void buttonHandler(View view) {
+		updateBMEInfo();
+	}
+
+    protected void updateBMEInfo() {
         BMEReader reader = new BMEReader();
         BMEInfo info = reader.getInfo();
         TextView view = (TextView) findViewById(R.id.info);
