@@ -4,22 +4,32 @@ import java.lang.String;
 
 public class BMEInfo {
 
-	int chargerType;
-	int chargingTime;
-	int batteryMaxLevel;
-	int batteryCurLevel;
-	int batteryMaxCapacity;
-	int batteryCurCapacity;
-	int batteryMaxVoltage;
-	int batteryCurVoltage;
-	int batteryPctLevel;
-	int batteryTemperature;
-	int batteryCurrent;
-	int batteryLastFullCapacity;
-	
+	public int chargerType;
+	public int chargingTime;
+	public int batteryMaxLevel;
+	public int batteryCurLevel;
+	public int batteryMaxCapacity;
+	public int batteryCurCapacity;
+	public int batteryMaxVoltage;
+	public int batteryCurVoltage;
+	public int batteryPctLevel;
+	public int batteryTemperature;
+	public int batteryCurrent;
+	public int batteryLastFullCapacity;
+
+	private final static String chargerTypeToString(int type) {
+		switch (type) {
+		case 0: return "None";
+		case 1: return "USB (no charging)";
+		case 2: return "USB";
+		case 3: return "Wall";
+		}
+		return "Unknown: " + new Integer(type).toString();
+	}
+
 	@Override
-	public String toString() {
-		String res = "charger type: " + chargerType + "\n"
+	public final String toString() {
+		String res = "charger type: " + chargerTypeToString(chargerType) + "\n"
 				+ "charging time: " + chargingTime + "\n"
 				+ "battery Max. Level: " + batteryMaxLevel + "\n"
 				+ "battery Cur. Level: " + batteryCurLevel + "\n"
