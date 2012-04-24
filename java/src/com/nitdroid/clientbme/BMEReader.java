@@ -52,6 +52,7 @@ public class BMEReader {
 
 			bytes = new byte[128];
 			is.read(bytes);
+			s.close();
 
 			info = new BMEInfo();
 			info.chargerType = readInt(bytes, 2);
